@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 15px 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2196F3;
+        }
+
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tab-button {
+            padding: 12px 24px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            background: #f0f0f0;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+        
+        .tab-button.active {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        #cars-table th { background-color: #4CAF50; }
+        #users-table th { background-color: #2196F3; }
+        #bookings-table th { background-color: #9C27B0; }
+
+        .admin-table th, .admin-table td {
+            border: 1px solid #eee;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .admin-table th {
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .admin-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .btn {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 5px;
+        }
+
+        .btn-edit {
+            background-color: #00BCD4;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background-color: #0097A7;
+            transform: translateY(-2px);
+        }
+
+        .btn-delete {
+            background-color: #ff5252;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #ff1744;
+            transform: translateY(-2px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalShow 0.3s ease;
+        }
+
+        @keyframes modalShow {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .admin-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">Администратор</div>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="logout()">Выйти</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="tab-container">
+        <button class="tab-button active" onclick="openTab('cars')">Автомобили</button>
+        <button class="tab-button" onclick="openTab('users')">Пользователи</button>
+        <button class="tab-button" onclick="openTab('bookings')">Бронирования</button>
+    </div>
+
+    <!-- Cars Tab -->
+    <div id="cars-tab" class="tab-content active">
+        <h2>Управление автомобилями</h2>
+        <button class="btn btn-edit" onclick="openAddModal('car')">+ Добавить автомобиль</button>
+        <table class="admin-table" id="cars-table">
+            <thead>
+            <tr>
+                <th onclick="sortTable('cars-table', 0)">ID ▲▼</th>
+                <th>Марка</th>
+                <th>Модель</th>
+                <th>Год</th>
+                <th>Цена за день</th>
+                <th>Доступен</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Users Tab -->
+    <div id="users-tab" class="tab-content">
+        <h2>Управление пользователями</h2>
+        <button class="btn btn-edit" onclick="openAddModal('user')">+ Добавить пользователя</button>
+        <table class="admin-table" id="users-table">
+            <thead>
+            <tr>
+                <th onclick="sortTable('users-table', 0)">ID ▲▼</th>
+                <th>Имя</th>
+                <th>Email</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Bookings Tab -->
+    <div id="bookings-tab" class="tab-content">
+        <h2>Управление бронированиями</h2>
+        <button class="btn btn-edit" onclick="openAddModal('booking')">+ Добавить бронирование</button>
+        <table class="admin-table" id="bookings-table">
+            <thead>
+            <tr>
+                <th onclick="sortTable('bookings-table', 0)">ID ▲▼</th>
+                <th>Пользователь</th>
+                <th>Автомобиль</th>
+                <th>Начало</th>
+                <th>Окончание</th>
+                <th>Стоимость</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Edit/Add Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <form id="editForm" class="admin-form">
+                <div id="formContent"></div>
+                <button type="button" class="btn btn-edit" onclick="submitForm()">Сохранить</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+
+<script>
+    let currentEditingId = null;
+    let currentEntityType = null;
+    let currentAction = 'edit';
+    let isAscending = true;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!localStorage.getItem('authToken')) {
+            window.location.href = 'login.html';
+            return;
+        }
+        loadData('/api/admin/cars', 'cars-table', renderCarRow);
+        loadData('/api/admin/users', 'users-table', renderUserRow);
+        loadData('/api/admin/bookings', 'bookings-table', renderBookingRow);
+    });
+
+    async function loadData(url, tableId, renderFunction) {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const tbody = document.getElementById(tableId).querySelector('tbody');
+            tbody.innerHTML = '';
+            data.sort((a, b) => a.id - b.id).forEach(item => tbody.appendChild(renderFunction(item)));
+        } catch (error) {
+            console.error('Ошибка загрузки:', error);
+        }
+    }
+
+    function renderUserRow(user) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>
+                <button class="btn btn-edit" onclick="editEntity('user', ${user.id})">Редакт.</button>
+                <button class="btn btn-delete" onclick="deleteEntity('user', ${user.id})">Удалить</button>
+            </td>`;
+        return row;
+    }
+
+    function renderCarRow(car) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${car.id}</td>
+            <td>${car.brand}</td>
+            <td>${car.model}</td>
+            <td>${car.year}</td>
+            <td>${car.pricePerDay} ₸</td>
+            <td>${car.available ? '✓' : '✗'}</td>
+            <td>
+                <button class="btn btn-edit" onclick="editEntity('car', ${car.id})">Редакт.</button>
+                <button class="btn btn-delete" onclick="deleteEntity('car', ${car.id})">Удалить</button>
+            </td>`;
+        return row;
+    }
+
+    function renderBookingRow(booking) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${booking.id}</td>
+            <td>${booking.user.name}</td>
+            <td>${booking.car.brand} ${booking.car.model}</td>
+            <td>${new Date(booking.startDate).toLocaleDateString()}</td>
+            <td>${new Date(booking.endDate).toLocaleDateString()}</td>
+            <td>${booking.totalPrice} ₸</td>
+            <td>
+                <button class="btn btn-edit" onclick="editEntity('booking', ${booking.id})">Редакт.</button>
+                <button class="btn btn-delete" onclick="deleteEntity('booking', ${booking.id})">Удалить</button>
+            </td>`;
+        return row;
+    }
+
+    function openTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(`${tabName}-tab`).classList.add('active');
+        document.querySelector(`button[onclick="openTab('${tabName}')"]`).classList.add('active');
+    }
+    async function editEntity(type, id) {
+        currentAction = 'edit';
+        currentEntityType = type;
+        currentEditingId = id;
+
+        try {
+            // Загружаем данные сущности
+            const response = await fetch(`/api/admin/${type}s/${id}`);
+            const data = await response.json();
+
+            // Показываем форму с текущими данными
+            showEditForm(getEntityFields(type, data));
+        } catch (error) {
+            console.error('Ошибка загрузки данных:', error);
+            alert('Не удалось загрузить данные для редактирования');
+        }
+    }
+
+    function showEditForm(fields) {
+        const formContent = document.getElementById('formContent');
+        formContent.innerHTML = '';
+
+        // Создаем поля формы на основе переданных данных
+        for (const [key, config] of Object.entries(fields)) {
+            const container = document.createElement('div');
+            container.style.marginBottom = '15px';
+
+            const label = document.createElement('label');
+            label.textContent = key.charAt(0).toUpperCase() + key.slice(1) + ':';
+            label.style.display = 'block';
+            label.style.marginBottom = '5px';
+            label.style.color = '#666';
+
+            const input = document.createElement('input');
+            input.type = config.type;
+            input.name = key;
+            input.value = config.value || '';
+            input.style.width = '100%';
+            input.style.padding = '10px';
+            input.style.borderRadius = '8px';
+            input.style.border = '1px solid #ddd';
+
+            // Для чекбоксов используем checked
+            if (config.type === 'checkbox') {
+                input.checked = config.checked || false;
+            }
+
+            container.appendChild(label);
+            container.appendChild(input);
+            formContent.appendChild(container);
+        }
+
+        // Показываем модальное окно
+        const modal = document.getElementById('editModal');
+        modal.style.display = 'flex';
+    }
+
+    async function deleteEntity(type, id) {
+        if (!confirm('Подтвердите удаление')) return;
+        try {
+            await fetch(`/api/admin/${type}s/${id}`, { method: 'DELETE' });
+            alert('Удалено успешно');
+            location.reload();
+        } catch (error) {
+            console.error('Ошибка удаления:', error);
+        }
+    }
+
+    function openAddModal(type) {
+        currentAction = 'add';
+        currentEntityType = type;
+        showEditForm(getEntityFields(type, {}));
+    }
+
+
+    function getEntityFields(type, data) {
+        switch (type) {
+            case 'user':
+                return {
+                    name: { type: 'text', value: data.name || '' },
+                    email: { type: 'email', value: data.email || '' },
+                    password: { type: 'password', value: '' } // Пароль оставляем пустым для безопасности
+                };
+            case 'car':
+                return {
+                    brand: { type: 'text', value: data.brand || '' },
+                    model: { type: 'text', value: data.model || '' },
+                    year: { type: 'number', value: data.year || '' },
+                    pricePerDay: { type: 'number', value: data.pricePerDay || '' },
+                    available: { type: 'checkbox', checked: data.available || true }
+                };
+            case 'booking':
+                return {
+                    userId: { type: 'number', value: data.userId || '' },
+                    carId: { type: 'number', value: data.carId || '' },
+                    startDate: { type: 'date', value: data.startDate ? new Date(data.startDate).toISOString().split('T')[0] : '' },
+                    endDate: { type: 'date', value: data.endDate ? new Date(data.endDate).toISOString().split('T')[0] : '' }
+                };
+            default:
+                return {};
+        }
+    }
+
+    function showEditForm(fields) {
+        const formContent = document.getElementById('formContent');
+        formContent.innerHTML = Object.entries(fields).map(([key, config]) => `
+            <div class="form-group">
+                <label>${key}:</label>
+                <input type="${config.type}" name="${key}" 
+                    value="${config.value || ''}" 
+                    ${config.type === 'checkbox' && config.checked ? 'checked' : ''}>
+            </div>`
+        ).join('');
+        
+        document.getElementById('editModal').style.display = 'flex';
+    }
+
+    async function submitForm() {
+        const formData = Object.fromEntries(
+            Array.from(document.querySelectorAll('#editForm input')).map(input => [
+                input.name,
+                input.type === 'checkbox' ? input.checked : input.value
+            ])
+        );
+
+        const url = currentAction === 'add' 
+            ? `/api/admin/${currentEntityType}s`
+            : `/api/admin/${currentEntityType}s/${currentEditingId}`;
+
+        try {
+            const response = await fetch(url, {
+                method: currentAction === 'add' ? 'POST' : 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            
+            if (!response.ok) throw new Error('Ошибка сервера');
+            alert('Сохранено успешно');
+            location.reload();
+        } catch (error) {
+            console.error('Ошибка:', error);
+            alert('Ошибка сохранения');
+        }
+    }
+
+    function sortTable(tableId, columnIndex) {
+        const table = document.getElementById(tableId);
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+        const isNumeric = !isNaN(parseFloat(rows[0].cells[columnIndex].textContent));
+
+        rows.sort((a, b) => {
+            const aVal = isNumeric 
+                ? parseFloat(a.cells[columnIndex].textContent)
+                : a.cells[columnIndex].textContent;
+            
+            const bVal = isNumeric 
+                ? parseFloat(b.cells[columnIndex].textContent)
+                : b.cells[columnIndex].textContent;
+
+            return isAscending ? (aVal > bVal ? 1 : -1) : (bVal > aVal ? 1 : -1);
+        });
+
+        isAscending = !isAscending;
+        table.querySelector('tbody').innerHTML = '';
+        rows.forEach(row => table.querySelector('tbody').appendChild(row));
+    }
+
+    function closeEditModal() {
+        document.getElementById('editModal').style.display = 'none';
+    }
+
+    function logout() {
+        localStorage.removeItem('authToken');
+        window.location.href = 'login.html';
+    }
+</script>
+</body>
+</html>
