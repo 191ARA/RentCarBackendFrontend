@@ -1,0 +1,413 @@
+
+
+
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #333;
+
+}
+
+/* Фиксированный хедер */
+header {
+    background-color: #111112;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    background-color: #111112;
+    border-radius: 5px; /* Закругленные углы */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+/* Эффект при наведении */
+nav ul li a:hover {
+
+    transform: scale(1.05); /* Легкое увеличение */
+}
+
+/* Отступы между кнопками */
+nav ul li {
+    margin-left: 10px;
+}
+nav {
+    padding-right: 20px;
+}
+
+
+
+
+/* Отступ для контента, чтобы не перекрывался хедером */
+main {
+    padding-top: 40px;
+}
+
+/* Секция героя */
+.hero {
+    background: url('../images/index.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 250px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.6),
+                 0 0 30px rgba(255, 255, 255, 0.4);
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.6),
+                 0 0 30px rgba(255, 255, 255, 0.4);
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e65c00;
+}
+
+/* Секция автомобилей */
+.cars {
+    padding: 50px 20px;
+    text-align: center;
+
+    color: #fff;
+
+}
+
+.car-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+/* Карточка автомобиля */
+.car-card {
+    background-color: #111112; /* Серый фон */
+    color: #fff; /* Белый текст */
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.car-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.car-card h3 {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.car-card p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Подвал */
+footer {
+    background-color: #111112;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+
+/* Наши преимущества */
+.advantages {
+    position: relative;
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff; /* Белый текст для контраста */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.advantages::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/advantages.jpg') center/cover no-repeat; /* Путь к фото */
+    filter: brightness(50%); /* Затемнение */
+    z-index: -1;
+}
+
+.advantages h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.advantages-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.adv-item {
+    background: rgba(255, 255, 255, 0.15); /* Прозрачный фон */
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px); /* Размытие фона */
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.adv-item:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.adv-description {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+
+.how-to-book {
+
+    position: relative;
+    padding: 150px 20px;
+    color: white;
+    text-align: center;
+}
+
+.how-to-book::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+}
+
+.how-to-book h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.step {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.step:hover {
+    transform: scale(1.05);
+}
+
+.step-number {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    background: #ffcc00;
+    color: black;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+
+.search-sort{
+    background:#000000;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+}
+.search-sort h2{
+    text-align:center;
+    margin-bottom:15px;
+}
+.search-sort form{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+}
+.search-sort label{
+    font-weight:bold;
+}
+.search-sort select,.search-sort input{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
+.search-sort button{
+    background:#007bff;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+.search-sort button:hover{
+    background:#0056b3;
+}
+#reset-button{
+    background:#dc3545;
+}
+#reset-button:hover{
+    background:#b02a37;
+}
+
+
+
+.auth-form {
+    background: rgba(255, 255, 255, 0.8); /* Используем background вместо background-color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавляем немного больше тени для глубины */
+    width: 300px;
+    text-align: center;
+}
+
+.auth-form h1 {
+    margin: 0 0 20px 0; /* Упрощаем margin */
+}
+
+.auth-form label {
+    display: block;
+    margin: 0 0 5px 0; /* Упрощаем margin */
+    font-weight: bold;
+}
+
+.auth-form input {
+    width: calc(100% - 22px); /* Учитываем padding и border */
+    padding: 10px;
+    margin: 0 0 15px 0; /* Упрощаем margin */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    background: #28a745; /* Используем background вместо background-color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease; /* Добавляем плавный переход */
+}
+
+.auth-form button:hover {
+    background: #218838; /* Используем background вместо background-color */
+}
+
+.auth-form p {
+    margin: 15px 0 0 0; /* Упрощаем margin */
+}
+
+.auth-form a {
+    color: #007bff;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease; /* Добавляем плавный переход */
+}
+
+.auth-form a:hover {
+    text-decoration: underline;
+}
