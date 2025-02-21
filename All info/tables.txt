@@ -1,0 +1,60 @@
+http://localhost:8080/index.html
+
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE cars (
+    id SERIAL PRIMARY KEY,
+    model VARCHAR(100) NOT NULL,
+    brand VARCHAR(100) NOT NULL,
+    year INT NOT NULL,
+    price_per_day DECIMAL(10, 2) NOT NULL,
+    available BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE bookings (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),
+    car_id INT REFERENCES cars(id),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    total_price DECIMAL(10, 2) NOT NULL
+);
+
+
+INSERT INTO cars (model, brand, year, price_per_day) VALUES
+('001 white', 'Zeekr', 2023, 60000.00),
+('001 black', 'Zeekr', 2023, 60000.00),
+('w223 black', 'Mercedes-benz', 2019, 180000.00),
+('G63 AMG black', 'Mercedes-Benz', 2020, 190000.00),
+('CHARGER SRT black', 'Dodge', 2019, 50000.00),
+('007 black', 'Zeekr', 2024, 60000.00),
+('Continental black', 'Bentley', 2020, 300000.00),
+('LX570 black', 'LEXUS', 2020, 120000.00),
+('LX570 white', 'LEXUS', 2020, 120000.00),
+('Land Cruise 200 black', 'Toyota', 2020, 100000.00),
+('Land Cruise 200 white', 'Toyota', 2020, 100000.00),
+('E200 white', 'Mercedes-Benz', 2020, 60000.00),
+('Mustang white', 'Ford', 2020, 55000.00),
+('X5 black', 'BMW', 2022, 120000.00),
+('Phantom black', 'Rolls-Royce', 2010, 400000.00),
+('Ghost black', 'Rolls-Royce', 2012, 380000.00),
+('Panamera white', 'Porsche', 2018, 150000.00),
+('Panamera black', 'Porsche', 2018, 150000.00),
+('750 black', 'BMW', 2019, 150000.00),
+('Range Rover black', 'Land Rover', 2021, 200000.00),
+('Taycan white', 'Porsche', 2023, 200000.00),
+('Land Cruiser Prado white', 'Toyota', 2024, 120000.00),
+('GLS 450 white', 'Mercedes-Benz', 2024, 170000.00),
+('X7 black', 'BMW', 2021, 170000.00),
+('GS 350 black', 'LEXUS', 2020, 100000.00),
+('GS 350 white', 'LEXUS', 2020, 100000.00),
+('Camry 75 black', 'Toyota', 2022, 55000.00),
+('Camry 75 white', 'Toyota', 2022, 55000.00),
+('Camry 80 black', 'Toyota', 2024, 100000.00),
+('Camry 80 white', 'Toyota', 2024, 100000.00);

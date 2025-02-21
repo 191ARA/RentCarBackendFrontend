@@ -1,0 +1,173 @@
+rentacar
+└── src
+    └── main
+        ├── java
+        │   └── com.example.rentacar
+        │               ├── controller
+        │               ├── model
+        │               ├── repository
+        │               └── RentacarApplication.java
+        └── resources
+            ├── application.properties
+            └── static
+
+
+Documentation for the "Rent a Car" Project
+
+1. Introduction
+The "Rent a Car" project is a web application for car rentals. Users can register, log in, view available cars, book them, and manage their bookings. Administrators have access to a management panel to control users, cars, and bookings.
+
+2. Technologies
+- Backend: Spring Boot (Java)
+- Frontend: HTML, CSS, JavaScript
+- Database: PostgreSQL
+- Build Tool: Maven
+
+3. Project Structure
+
+3.1. Backend
+- Controllers:
+  - AdminController: Manages users, cars, and bookings for administrators.
+  - AuthController: Handles user registration and authentication.
+  - BookingController: Manages bookings.
+  - CarController: Retrieves a list of cars.
+
+- Models:
+  - Booking: Represents a booking.
+  - Car: Represents a car.
+  - User: Represents a user.
+
+- Repositories:
+  - BookingRepository: Handles database operations for bookings.
+  - CarRepository: Handles database operations for cars.
+  - UserRepository: Handles database operations for users.
+
+3.2. Frontend
+- HTML Pages:
+  - index.html: Home page with service information and a list of cars.
+  - login.html: Login page.
+  - register.html: Registration page.
+  - profile.html: User profile page with bookings and available cars.
+  - admin.html: Admin panel for managing users, cars, and bookings.
+
+- CSS Styles:
+  - auth.css: Styles for authentication and registration pages.
+  - profile.css: Styles for the profile page.
+  - styles.css: Main styles for the application.
+
+- JavaScript:
+  - app.js: Main script for interacting with the API and managing the UI.
+  - profile.js: Script for handling user profile and bookings.
+
+4. API
+
+4.1. AuthController
+- POST /api/register: Registers a new user.
+  - Parameters: name, email, password.
+  - Response: { "success": boolean, "message": string }.
+
+- POST /api/login: Authenticates a user.
+  - Parameters: email, password.
+  - Response: { "success": boolean, "message": string, "userId": number, "role": string }.
+
+- GET /api/users/{id}: Retrieves user information by ID.
+  - Response: User.
+
+4.2. BookingController
+- POST /api/bookings: Books a car.
+  - Parameters: userId, carId, startDate, endDate.
+  - Response: { "success": boolean, "message": string }.
+
+- GET /api/bookings: Retrieves a list of user bookings.
+  - Parameters: userId.
+  - Response: { "success": boolean, "bookings": Booking[] }.
+
+4.3. CarController
+- GET /api/cars: Retrieves a list of all cars.
+  - Response: Car[].
+
+4.4. AdminController
+- GET /api/admin/users: Retrieves a list of all users.
+  - Response: User[].
+
+- GET /api/admin/users/{id}: Retrieves user information by ID.
+  - Response: User.
+
+- POST /api/admin/users: Creates a new user.
+  - Parameters: User.
+  - Response: User.
+
+- PUT /api/admin/users/{id}: Updates user information.
+  - Parameters: User.
+  - Response: User.
+
+- DELETE /api/admin/users/{id}: Deletes a user.
+  - Response: 200 OK.
+
+- GET /api/admin/cars: Retrieves a list of all cars.
+  - Response: Car[].
+
+- GET /api/admin/cars/{id}: Retrieves car information by ID.
+  - Response: Car.
+
+- POST /api/admin/cars: Creates a new car.
+  - Parameters: Car.
+  - Response: Car.
+
+- PUT /api/admin/cars/{id}: Updates car information.
+  - Parameters: Car.
+  - Response: Car.
+
+- DELETE /api/admin/cars/{id}: Deletes a car.
+  - Response: 200 OK.
+
+- GET /api/admin/bookings: Retrieves a list of all bookings.
+  - Response: Booking[].
+
+- GET /api/admin/bookings/{id}: Retrieves booking information by ID.
+  - Response: Booking.
+
+- DELETE /api/admin/bookings/{id}: Deletes a booking.
+  - Response: 200 OK.
+
+5. Database
+- Tables:
+  - users: Stores user information.
+  - cars: Stores car information.
+  - bookings: Stores booking information.
+
+6. Frontend
+
+6.1. Home Page (index.html)
+- Description: The home page displays service information, a list of available cars, and booking instructions.
+- Features:
+  - View cars with sorting and filtering options.
+  - Navigate to registration and login pages.
+
+6.2. Login Page (login.html)
+- Description: The login page allows users to log in.
+- Features:
+  - Enter email and password.
+  - Navigate to the registration page.
+
+6.3. Registration Page (register.html)
+- Description: The registration page allows new users to register.
+- Features:
+  - Enter name, email, and password.
+  - Navigate to the login page.
+
+6.4. Profile Page (profile.html)
+- Description: The profile page displays user bookings and available cars.
+- Features:
+  - View current bookings.
+  - Book new cars.
+  - Log out.
+
+6.5. Admin Panel (admin.html)
+- Description: The admin panel allows administrators to manage users, cars, and bookings.
+- Features:
+  - Manage users, cars, and bookings.
+  - Add, edit, and delete records.
+
+Conclusion
+The "Rent a Car" project is a fully functional web application for car rentals. It provides a user-friendly interface for users and administrators, along with reliable backend logic for data management.
