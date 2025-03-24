@@ -1,0 +1,68 @@
+Main HTTP Requests (GET, POST, PUT, DELETE)
+1) GET – Retrieves data (e.g., list of cars, bookings).
+2) POST – Creates new records (e.g., user registration, car booking).
+3) PUT – Updates existing data.
+4) DELETE – Removes data (e.g., canceling a booking).
+
+
+API Endpoints in Our Project
+Authentication & Authorization
+POST /api/auth/login – Authenticates users and returns a JWT token.
+POST /api/auth/register – Registers a new user in the system.
+
+Car Management
+GET /api/cars – Retrieves a list of all available cars.
+POST /api/cars – Adds a new car (Admin only).
+GET /api/cars/{id} – Retrieves details of a specific car by ID.
+DELETE /api/cars/{id} – Deletes a car from the system (Admin only).
+
+Booking Management
+POST /api/bookings – Creates a new car booking.
+GET /api/bookings – Retrieves all bookings of the logged-in user.
+DELETE /api/bookings/{id} – Cancels a specific booking.
+
+
+
+How Spring Boot Handles Requests (Mappings & Beans)
+1)Mapping Endpoints
+Spring Boot uses annotations to define API routes:
+
+@RestController – Marks a class as a REST controller.
+
+@RequestMapping("/api") – Sets a base URL for endpoints.
+
+@GetMapping, @PostMapping, @PutMapping, @DeleteMapping – Map HTTP requests to specific methods.
+
+2) Beans & Dependency Injection
+
+@Service – Defines business logic (e.g., booking validation).
+
+@Repository – Handles database operations using Spring Data JPA.
+
+@Autowired – Injects dependencies (e.g., repositories into services).
+
+
+
+
+
+MVP (Minimum Viable Product) Features in our Project
+1)Authentication & Security
+User registration and login using JWT authentication.
+
+Role-based access control (ADMIN & USER).
+
+Password hashing with BCrypt for security.
+
+2) Website Features
+Login Page – Users can enter their credentials to access the system.
+
+Account Page – Displays user information and bookings.
+
+Transaction Page – Allows users to view their past transactions (rental history).
+
+Logout Functionality – Users can securely log out of their session.
+
+3)Deployment & Web Hosting
+The project is designed for deployment using Spring Boot and can be hosted on a cloud platform or a local server.
+
+Database integration with PostgreSQL to store user data, car details, and bookings.

@@ -1,0 +1,36 @@
+The project uses Spring Security and JWT tokens for authentication and authorization, ensuring secure access to API endpoints.
+
+ Key Security Components
+🔹 Spring Security – Manages authentication and authorization.
+🔹 JWT (JSON Web Token) – Eliminates the need for session-based authentication.
+🔹 Roles & Permissions – Different access levels for USER and ADMIN.
+🔹 API Protection – Every request must include a valid JWT token.
+🔹 Password Hashing – Uses BCrypt to securely store passwords.
+
+1. Authentication (JWT Tokens)
+🔹 When a user logs in, the server generates a JWT token.
+🔹 The client must include this token in the Authorization: Bearer <token> header for all API requests.
+🔹 JWT ensures stateless authentication, meaning the server does not need to store session data.
+
+Authentication Process:
+
+The user sends a POST /api/auth/login request with email and password.
+
+If the credentials are correct, the server creates a JWT token and sends it to the client.
+
+The client includes this token in every request to access protected routes.
+
+2. Authorization (Role-Based Access Control)
+🔹 ADMIN Role – Can manage cars (add, delete, update).
+🔹 USER Role – Can browse available cars and make bookings.
+
+API endpoints are protected based on user roles, preventing unauthorized access.
+
+3. Password Security
+🔹 BCrypt hashing ensures that passwords are stored securely.
+🔹 Even if the database is compromised, attackers cannot retrieve plain-text passwords.
+
+4. API Security Measures
+🔹 Token-based authentication ensures only authorized users can access protected routes.
+🔹 Request validation – The server checks the JWT token before processing a request.
+🔹 Protection against CSRF & XSS attacks – Spring Security includes built-in protection.

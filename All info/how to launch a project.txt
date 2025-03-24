@@ -1,0 +1,104 @@
+rentacar
+└── src
+    └── main
+        ├── java
+        │   └── com.example.rentacar
+        │               ├── controller
+        │               ├── model
+        │               ├── repository
+        │               └── RentacarApplication.java
+        └── resources
+            ├── application.properties
+            └── static
+
+
+Launching the Project
+
+1. Ensure the following components are installed:
+   - Java Development Kit (JDK) version 17 or higher.
+   - Apache Maven.
+   - PostgreSQL.
+
+2. Set up the database:
+   - Create a new database in PostgreSQL.
+   - Configure the database connection in the `application.properties` file:
+     ```
+     spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
+     spring.datasource.username=your_username
+     spring.datasource.password=your_password
+     spring.jpa.hibernate.ddl-auto=update
+     ```
+
+3. Build the project:
+   - Open a terminal in the project's root directory.
+   - Run the command:
+     ```
+     mvn clean install
+     ```
+
+4. Run the project:
+   - After a successful build, run the command:
+     ```
+     mvn spring-boot:run
+     ```
+
+5. Open a web browser:
+   - Navigate to `http://localhost:8080`.
+   - You will see the application's home page.
+
+6. To access the admin panel:
+   - Use the admin credentials:
+     - Email: `RentCarAdmin@gmail.com`
+     - Password: `123123`
+
+7. To test the functionality:
+   - Register as a new user.
+   - Log in and test the car booking functionality.
+   - Use the admin panel to manage data.
+
+
+
+
+Запуск проекта
+
+1. Убедитесь, что установлены следующие компоненты:
+ - Java Development Kit (JDK) версии 17 или выше.
+ - Apache Maven.
+ - PostgreSQL.
+
+2. Настройте базу данных:
+ - Создайте новую базу данных в PostgreSQL.
+ - Настройте подключение к базе данных в файле `application.properties`:
+   ```
+   spring.datasource.url=jdbc:postgresql://localhost:5432/your_database_name
+   spring.datasource.username=your_username
+   spring.datasource.password=your_password
+   spring.jpa.hibernate.ddl-auto=update
+   ```
+
+3. Соберите проект:
+ - Откройте терминал в корневой директории проекта.
+ - Выполните команду:
+   ```
+   mvn clean install
+   ```
+
+4. Запустите проект:
+ - После успешной сборки выполните команду:
+   ```
+   mvn spring-boot:run
+   ```
+
+5. Откройте веб-браузер:
+ - Перейдите по адресу `http://localhost:8080`.
+ - Вы увидите главную страницу приложения.
+
+6. Для доступа к панели администратора:
+ - Используйте учетные данные администратора:
+   - Email: `RentCarAdmin@gmail.com`
+   - Пароль: `123123`
+
+7. Для тестирования функционала:
+ - Зарегистрируйтесь как новый пользователь.
+ - Авторизуйтесь и проверьте возможность бронирования автомобилей.
+ - Используйте панель администратора для управления данными.

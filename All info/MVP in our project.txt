@@ -1,0 +1,50 @@
+MVP (Minimum Viable Product) in Our Project
+MVP (Minimum Viable Product) is the basic version of a project with core functionality that allows it to operate. 
+1. Core Features
+🔹 Authentication & Authorization (registration, login, logout).
+🔹 User Management (roles: USER and ADMIN).
+🔹 Car Management (view, add, delete cars).
+🔹 Car Booking (create, view, cancel bookings).
+
+2. MVP Structure
+Frontend (React/Vue/Angular)
+
+Pages:
+
+Login / Register
+
+Car Listing
+
+Booking Page
+
+User Profile
+
+Interacts with the backend via REST API.
+
+Backend (Spring Boot)
+
+API endpoints for managing users, cars, and bookings.
+
+Spring Security for API protection and authentication using JWT.
+
+PostgreSQL as the database.
+
+Database (PostgreSQL)
+
+Tables:
+
+users – stores user accounts and roles.
+
+cars – stores car data.
+
+bookings – stores booking information.
+
+3. How the MVP Works
+1) User registers or logs in.
+2) Views available cars.
+3) Selects a car and books it.
+4) Can cancel the booking or check booking history.
+5) Admin can manage cars (add, delete, edit).
+
+
+
