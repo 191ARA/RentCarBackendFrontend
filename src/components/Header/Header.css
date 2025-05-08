@@ -1,0 +1,148 @@
+/* Базовые стили хедера */
+.header {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Светлая тема */
+.header.light {
+  --header-bg: #ffffff;
+  --text-color: #000000;
+  --border-color: #e0e0e0;
+  --dropdown-bg: #ffffff;
+  --hover-bg: rgba(0, 0, 0, 0.05);
+}
+
+/* Темная тема */
+.header.dark {
+  --header-bg: #121212;
+  --text-color: #ffffff;
+  --border-color: #ff7b25;
+  --dropdown-bg: #1e1e1e;
+  --hover-bg: rgba(255, 123, 37, 0.1);
+}
+
+/* Контейнер навигации */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Логотип */
+.logo {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--border-color);
+}
+
+/* Элементы управления */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Кнопки темы и языка */
+.theme-toggle, .language-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover, .language-toggle:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Кнопка меню */
+.menu-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 2rem;
+  background-color: var(--dropdown-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 1001;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  border: 1px solid var(--border-color);
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Элементы меню */
+.dropdown-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dropdown-link:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Кнопка выхода */
+.logout-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: var(--hover-bg);
+  color: #ff5252;
+}
+
+/* Разделитель в меню */
+.menu-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 0.5rem 0;
+}

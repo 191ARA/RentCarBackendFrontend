@@ -1,0 +1,210 @@
+:root {
+  /* Light theme */
+  --light-bg: #f8f9fa;
+  --light-text: #2d3748;
+  --light-card: #ffffff;
+  --light-border: #e2e8f0;
+  --light-primary: #ff7b25;
+  --light-accent: #ff7b25;
+  --light-rating: #f59e0b;
+  
+  /* Dark theme */
+  --dark-bg: #121212;
+  --dark-text: #e2e8f0;
+  --dark-card: #2d2d2d;
+  --dark-border: #4a5568;
+  --dark-primary: #ff7b25;
+  --dark-accent: #ff7b25;
+  --dark-rating: #fbbf24;
+}
+
+.reviews-list-container {
+  padding: 1.5rem 0.5rem;        /* Vertical | Horizontal padding */
+  min-height: 100vh;            /* Minimum full viewport height */
+  transition: all 0.2s ease;    /* Smooth transitions for all properties */
+}
+/* Theme variants */
+.reviews-list-container.light {
+  background: var(--light-bg);
+  color: var(--light-text);
+  --bg: var(--light-bg);
+  --text: var(--light-text);
+  --card: var(--light-card);
+  --border: var(--light-border);
+  --primary: var(--light-primary);
+  --accent: var(--light-accent);
+  --rating: var(--light-rating);
+}
+
+.reviews-list-container.dark {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  --bg: var(--dark-bg);
+  --text: var(--dark-text);
+  --card: var(--dark-card);
+  --border: var(--dark-border);
+  --primary: var(--dark-primary);
+  --accent: var(--dark-accent);
+  --rating: var(--dark-rating);
+}
+
+.reviews-content {
+  max-width: 1600px; /* Увеличиваем максимальную ширину контейнера */
+  padding: 0 0.5rem; /* Уменьшаем боковые отступы */
+}
+
+/* Stats section */
+.reviews-stats {
+  text-align: center;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  background: var(--card);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  max-width: 600px;
+}
+
+.stats-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.average-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.stars {
+  color: var(--rating);
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.total-reviews {
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* Reviews grid */
+.reviews-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: 2rem 0;
+}
+
+.review-card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  border-color: var(--primary);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.review-date {
+  color: var(--text);
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+.review-rating {
+  color: var(--rating);
+  font-size: 1.2rem;
+  min-width: 70px;
+  text-align: right;
+}
+
+.review-comment {
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  padding-top: 1rem;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.page-button,
+.nav-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  min-width: 38px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.page-button:hover:not(.active),
+.nav-button:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.page-button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+

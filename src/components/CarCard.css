@@ -1,0 +1,135 @@
+/* Обновленные стили для карточек с учетом темы */
+.car-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg, white);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 15px;
+  width: 250px;
+  color: var(--text-color, #333);
+}
+
+.detail-label {
+  color: var(--detail-label-color, #333);
+  font-weight: 600;
+}
+
+/* Светлая тема */
+.light .car-card {
+  --card-bg: #fff;
+  --text-color: #333;
+  --detail-label-color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light .detail-label {
+  color: #333;
+}
+
+/* Темная тема */
+.dark .car-card {
+  --card-bg: #2d2d2d;
+  --text-color: #fff;
+  --detail-label-color: #ff7b25;
+  border: 1px solid rgba(255, 123, 37, 0.3);
+}
+
+.dark .detail-label {
+  color: #ff7b25;
+}
+
+/* Остальные стили */
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.car-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.car-image:hover {
+  opacity: 0.8;
+}
+
+.car-info {
+  padding: 15px;
+}
+
+.car-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.car-price {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.car-description {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.car-details {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.car-details .detail {
+  display: flex;
+  align-items: center;
+}
+
+.car-details .detail i {
+  margin-right: 5px;
+}
+
+.car-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px 15px;
+}
+
+.view-button, .book-button {
+  padding: 8px 15px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.view-button {
+  background-color: var(--button-secondary-bg, #f1f1f1);
+  color: var(--button-secondary-text, #333);
+}
+
+.view-button:hover {
+  background-color: var(--button-secondary-hover, #e0e0e0);
+}
+
+.book-button {
+  background-color: var(--button-primary-bg, #ff7b25);
+  color: var(--button-primary-text, white);
+}
+
+.book-button:hover {
+  background-color: var(--button-primary-hover, #ff5e00);
+}
+
+.book-button:disabled {
+  background-color: var(--button-disabled-bg, #cccccc);
+  cursor: not-allowed;
+}

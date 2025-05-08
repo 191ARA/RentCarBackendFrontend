@@ -1,0 +1,330 @@
+/* AdminPage.css */
+
+:root {
+  /* Light theme */
+  --light-bg: #f8f9fa;
+  --light-text: #2d3748;
+  --light-card: #ffffff;
+  --light-border: #e2e8f0;
+  --light-primary: #4f46e5;
+  --light-accent: #6366f1;
+  --light-error: #ef4444;
+  --light-success: #10b981;
+  --light-warning: #f59e0b;
+  
+  /* Dark theme */
+  --dark-bg: #121212;
+  --dark-text: #e2e8f0;
+  --dark-card: #1e1e1e;
+  --dark-border: #4a5568;
+  --dark-primary: #6366f1;
+  --dark-accent: #818cf8;
+  --dark-error: #f87171;
+  --dark-success: #34d399;
+  --dark-warning: #fbbf24;
+}
+
+.admin-page {
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  padding: 1rem;
+}
+
+/* Theme variants */
+.admin-page.light {
+  background: var(--light-bg);
+  color: var(--light-text);
+  --bg: var(--light-bg);
+  --text: var(--light-text);
+  --card: var(--light-card);
+  --border: var(--light-border);
+  --primary: var(--light-primary);
+  --accent: var(--light-accent);
+  --error: var(--light-error);
+  --success: var(--light-success);
+  --warning: var(--light-warning);
+}
+
+.admin-page.dark {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  --bg: var(--dark-bg);
+  --text: var(--dark-text);
+  --card: var(--dark-card);
+  --border: var(--dark-border);
+  --primary: var(--dark-primary);
+  --accent: var(--dark-accent);
+  --error: var(--dark-error);
+  --success: var(--dark-success);
+  --warning: var(--dark-warning);
+}
+
+.admin-page h1 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.admin-tabs button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--card);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+}
+
+.admin-tabs button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.admin-tabs button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.admin-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.create-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--success);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.create-button:hover {
+  opacity: 0.9;
+}
+
+.admin-section {
+  background: var(--card);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.admin-section h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.edit-form {
+  background: var(--bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+}
+
+.edit-form h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.edit-form input,
+.edit-form select,
+.edit-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.edit-form input[type="date"] {
+  padding: 0.65rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-actions button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.form-actions button:first-child {
+  background: var(--primary);
+  color: white;
+}
+
+.form-actions button:first-child:hover {
+  background: var(--accent);
+}
+
+.form-actions button:last-child {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.form-actions button:last-child:hover {
+  background: var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+table th {
+  background: var(--primary);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+table th:hover {
+  background: var(--accent);
+}
+
+table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+table tr:hover td {
+  background: rgba(0,0,0,0.03);
+}
+
+table button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+table button:first-child {
+  background: var(--warning);
+  color: white;
+}
+
+table button:first-child:hover {
+  opacity: 0.9;
+}
+
+table button:last-child {
+  background: var(--error);
+  color: white;
+}
+
+table button:last-child:hover {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-tabs {
+    flex-direction: column;
+  }
+  
+  .admin-tabs button {
+    width: 100%;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+/* Добавьте эти стили в AdminPage.css */
+
+/* Стили для статусов залога */
+.paid {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.not-paid {
+  color: #f44336;
+  font-weight: bold;
+}
+
+/* Стили для статусов бронирования */
+.active {
+  color: #2196F3;
+  font-weight: bold;
+}
+
+.cancelled {
+  color: #9E9E9E;
+  font-weight: bold;
+}
