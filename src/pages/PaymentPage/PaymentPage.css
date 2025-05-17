@@ -1,0 +1,90 @@
+/* PaymentPage.css */
+.payments-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .payments-container.light {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .payments-container.dark {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+  }
+  
+  .payment-card {
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-card.light {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .payment-card.dark {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+  }
+  
+  .payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .payment-header.dark {
+    border-bottom-color: #444;
+  }
+  
+  .status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .status-badge.completed {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .status-badge.pending {
+    background-color: #ff9800;
+    color: white;
+  }
+  
+  .status-badge.failed {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .amount {
+    font-weight: bold;
+    color: #4caf50;
+  }
+  
+  .no-payments {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .no-payments.dark {
+    color: #aaa;
+  }
