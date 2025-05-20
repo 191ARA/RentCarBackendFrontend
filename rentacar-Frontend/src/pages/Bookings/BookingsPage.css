@@ -1,0 +1,222 @@
+.bookings-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bookings-container.light {
+  background-color: #f8f9fa;
+  color: #000000;
+}
+
+.bookings-container.dark {
+  background-color: #121212;
+  color: #f9f9f9;
+}
+
+.bookings-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.booking-card {
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-card.light {
+  background-color: white;
+  border: 1px solid #ddd;
+}
+
+.booking-card.dark {
+  background-color: #2d2d2d;
+  border: 1px solid #ff7b25;
+}
+
+.car-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking-info {
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.booking-info h2 {
+  margin-top: 0;
+  color: #ff7b25;
+}
+
+.booking-info p {
+  margin: 8px 0;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+}
+
+.loading.light {
+  color: #333;
+}
+
+.loading.dark {
+  color: #f9f9f9;
+}
+
+.error.light {
+  color: #dc3545;
+}
+
+.error.dark {
+  color: #ff6b6b;
+}
+
+
+
+
+/* Добавьте эти стили в ваш файл BookingsPage.css */
+
+.booking-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.pay-deposit-btn {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.pay-deposit-btn:hover {
+  background-color: #45a049;
+}
+
+.deposit-paid {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.deposit-not-paid {
+  color: #f44336;
+  font-weight: bold;
+}
+
+/* Для темной темы */
+.dark .pay-deposit-btn {
+  background-color: #2E7D32;
+}
+
+.dark .pay-deposit-btn:hover {
+  background-color: #1B5E20;
+
+
+  /* ... существующие стили ... */
+
+.payment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.payment-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 450px;
+}
+
+.dark .payment-modal-content {
+  background: #2d2d2d;
+}
+
+.deposit-paid {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.deposit-not-paid {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.pay-deposit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pay-deposit-btn:hover {
+  background-color: #45a049;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f;
+}
+}
